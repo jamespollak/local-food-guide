@@ -6,6 +6,7 @@ var logger = require("morgan");
 const mongoose = require("mongoose");
 const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
+require("dotenv").config();
 
 //router
 
@@ -20,7 +21,7 @@ var app = express();
 //mongoose connect
 
 mongoose
-  .connect("mongodb://localhost:27017/your-local-food-app", {
+  .connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true
   })
