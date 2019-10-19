@@ -4,7 +4,7 @@ const User = require("../models/User");
 
 //Profile of logged in user
 router.get("/", (req, res) => {
-  User.findById(req.session.users._id)
+  User.findById(req.session.users)
     .populate("places")
     .then(user => {
       res.render("profile", { user: user });
